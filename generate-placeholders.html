@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Car Placeholder Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            padding: 20px;
+        }
+        .placeholder {
+            width: 400px;
+            height: 250px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            border: 2px solid #B30000;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20 20h60v20H20z" fill="%23B30000" opacity="0.3"/><path d="M15 40h70v30H15z" fill="%23333"/><circle cx="25" cy="75" r="8" fill="%23666"/><circle cx="75" cy="75" r="8" fill="%23666"/></svg>') center/contain no-repeat;
+        }
+        .car-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #B30000;
+            text-align: center;
+            z-index: 1;
+            background: rgba(0,0,0,0.8);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Car Placeholder Images</h1>
+    <p>These are placeholder images for the car inventory. Replace with actual high-quality car photos.</p>
+    
+    <div class="grid">
+        <div class="placeholder">
+            <div class="car-name">Mercedes S63 AMG</div>
+        </div>
+        <div class="placeholder">
+            <div class="car-name">BMW X7 M50i</div>
+        </div>
+        <div class="placeholder">
+            <div class="car-name">Audi RS6 Avant</div>
+        </div>
+        <div class="placeholder">
+            <div class="car-name">Lexus LX 600</div>
+        </div>
+        <div class="placeholder">
+            <div class="car-name">Toyota LC 300 GR</div>
+        </div>
+        <div class="placeholder">
+            <div class="car-name">Range Rover Sport SVR</div>
+        </div>
+        <div class="placeholder">
+            <div class="car-name">Porsche Cayenne GT</div>
+        </div>
+        <div class="placeholder">
+            <div class="car-name">Mercedes G63 AMG</div>
+        </div>
+        <div class="placeholder">
+            <div class="car-name">BMW M4 Competition</div>
+        </div>
+        <div class="placeholder">
+            <div class="car-name">Audi Q8 55 TFSI</div>
+        </div>
+        <div class="placeholder">
+            <div class="car-name">Lexus LC 500</div>
+        </div>
+        <div class="placeholder">
+            <div class="car-name">Toyota Hilux GR</div>
+        </div>
+    </div>
+
+    <h2>Instructions:</h2>
+    <ul>
+        <li>Replace placeholder images with high-quality photos of actual vehicles</li>
+        <li>Use images with 400x250px minimum resolution</li>
+        <li>Ensure all images are optimized for web (WebP format recommended)</li>
+        <li>Use consistent lighting and angles for professional appearance</li>
+        <li>Consider adding a showroom image for the About section</li>
+    </ul>
+</body>
+</html>
