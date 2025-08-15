@@ -337,29 +337,28 @@ p {
     border-radius: 0;
     transition: var(--transition-smooth);
     cursor: pointer;
-    border: 2px solid transparent;
+    border: 4px solid transparent;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--neon-blue), var(--electric-blue));
-    color: var(--deep-black);
-    border-color: var(--neon-blue);
+    background: linear-gradient(135deg, var(--bright-sky-blue), var(--deep-teal-blue));
+    color: var(--off-white);
+    border: 4px solid var(--bright-sky-blue);
     font-weight: 700;
-    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(3, 125, 182, 0.3);
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, var(--electric-blue), var(--neon-blue));
-    border-color: var(--neon-blue);
+    background: linear-gradient(135deg, var(--deep-teal-blue), var(--bright-sky-blue));
+    border-color: var(--deep-teal-blue);
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.6), 0 0 25px rgba(0, 212, 255, 0.4);
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(3, 125, 182, 0.4);
 }
 
 .btn-secondary {
     background: transparent;
     color: var(--off-white);
-    border-color: var(--off-white);
+    border: 4px solid var(--off-white);
 }
 
 .btn-secondary:hover {
@@ -1027,14 +1026,14 @@ p {
     background: rgba(15, 15, 15, 0.4);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 2px solid var(--neon-blue);
+    border: 5px solid var(--bright-sky-blue);
     border-radius: 20px;
     max-width: 800px;
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.4), 0 0 40px rgba(0, 212, 255, 0.2);
+    box-shadow: 0 20px 60px rgba(3, 125, 182, 0.3);
     transform: scale(0.9);
     transition: var(--transition-smooth);
 }
@@ -1094,10 +1093,9 @@ p {
 .modal-description h3,
 .modal-specs h3,
 .modal-details h3 {
-    color: var(--neon-blue);
+    color: var(--bright-sky-blue);
     margin-bottom: 1rem;
     font-size: 1.5rem;
-    text-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
 }
 
 .specs-grid {
@@ -1111,7 +1109,7 @@ p {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(3, 125, 182, 0.1);
+    border-bottom: 3px solid rgba(3, 125, 182, 0.3);
 }
 
 .spec-label {
@@ -1129,7 +1127,7 @@ p {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    border-top: 1px solid rgba(3, 125, 182, 0.2);
+    border-top: 4px solid var(--bright-sky-blue);
 }
 
 @media (max-width: 768px) {
@@ -1315,8 +1313,8 @@ p {
     left: 50%;
     width: 20px;
     height: 20px;
-    border: 2px solid var(--light-grey);
-    border-top: 2px solid var(--bright-sky-blue);
+    border: 4px solid var(--light-grey);
+    border-top: 4px solid var(--bright-sky-blue);
     border-radius: 50%;
     animation: spin 1s linear infinite;
     transform: translate(-50%, -50%);
