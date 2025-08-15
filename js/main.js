@@ -1,12 +1,20 @@
 // Main JavaScript file for Big Five Car Sales website
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all components
-    initNavigation();
-    initHero();
-    initCarsDisplay();
-    initForms();
-    initAnimations();
-    initScrollEffects();
+    // Initialize loading screen first
+    initLoadingScreen();
+    
+    // Initialize all components after loading
+    setTimeout(() => {
+        initNavigation();
+        initHero();
+        initCarsDisplay();
+        initForms();
+        initAnimations();
+        initScrollEffects();
+        initParticles();
+        initPremiumEffects();
+        enhanceFormSubmissions();
+    }, 2000);
 });
 
 // ===== NAVIGATION =====
@@ -16,12 +24,22 @@ function initNavigation() {
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    // Navbar scroll effect
+    // Navbar scroll effect and progress bar
+    const scrollProgress = document.getElementById('scroll-progress');
+    
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
+        }
+        
+        // Update scroll progress bar
+        if (scrollProgress) {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
         }
     });
 
@@ -523,10 +541,32 @@ function initAnimations() {
     }, observerOptions);
 
     // Observe elements for animation
-    const animateElements = document.querySelectorAll('.car-card, .service-card, .testimonial-card, .contact-item');
+    const animateElements = document.querySelectorAll('.car-card, .service-card, .testimonial-card, .contact-item, .section-title, .hero-content');
     animateElements.forEach(el => {
         observer.observe(el);
     });
+    
+    // Enhanced hover effects for cards
+    const cards = document.querySelectorAll('.car-card, .service-card, .testimonial-card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-20px) scale(1.03)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+    
+    // Smooth scroll for scroll indicator
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            document.querySelector('#featured').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    }
 }
 
 // ===== SCROLL EFFECTS =====
@@ -563,6 +603,234 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
+}
+
+// ===== PREMIUM LOADING SCREEN =====
+function initLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    
+    // Hide loading screen after 2 seconds
+    setTimeout(() => {
+        if (loadingScreen) {
+            loadingScreen.classList.add('hidden');
+        }
+    }, 2000);
+}
+
+// ===== PREMIUM PARTICLES =====
+function initParticles() {
+    const particlesContainer = document.getElementById('particles-container');
+    if (!particlesContainer) return;
+    
+    // Create particles
+    for (let i = 0; i < 50; i++) {
+        createParticle(particlesContainer);
+    }
+    
+    // Continuously create new particles
+    setInterval(() => {
+        if (Math.random() > 0.7) {
+            createParticle(particlesContainer);
+        }
+    }, 2000);
+}
+
+function createParticle(container) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    
+    // Random starting position
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDelay = Math.random() * 15 + 's';
+    
+    container.appendChild(particle);
+    
+    // Remove particle after animation
+    setTimeout(() => {
+        if (particle.parentNode) {
+            particle.parentNode.removeChild(particle);
+        }
+    }, 25000);
+}
+
+// ===== PREMIUM EFFECTS =====
+function initPremiumEffects() {
+    // Add premium sound effects (optional)
+    addSoundEffects();
+    
+    // Enhanced form validation
+    enhanceFormValidation();
+    
+    // Premium hover effects
+    addPremiumHoverEffects();
+}
+
+function addSoundEffects() {
+    // Create audio context for subtle UI sounds
+    const buttons = document.querySelectorAll('.btn, .view-details-btn');
+    
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+            // Subtle hover sound effect (optional)
+            playHoverSound();
+        });
+        
+        button.addEventListener('click', () => {
+            // Click sound effect (optional)
+            playClickSound();
+        });
+    });
+}
+
+function playHoverSound() {
+    // Create a subtle hover sound using Web Audio API
+    try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+        gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+        
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.1);
+    } catch (e) {
+        // Silently fail if audio context is not supported
+    }
+}
+
+function playClickSound() {
+    // Create a subtle click sound
+    try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.setValueAtTime(1200, audioContext.currentTime);
+        gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
+        
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.05);
+    } catch (e) {
+        // Silently fail if audio context is not supported
+    }
+}
+
+function enhanceFormValidation() {
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        const inputs = form.querySelectorAll('input, textarea');
+        
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => {
+                validateInput(input);
+            });
+            
+            input.addEventListener('input', () => {
+                clearValidationState(input);
+            });
+        });
+    });
+}
+
+function validateInput(input) {
+    const isValid = input.checkValidity();
+    
+    if (isValid && input.value.trim() !== '') {
+        input.classList.add('valid');
+        input.classList.remove('invalid');
+    } else if (!isValid && input.value.trim() !== '') {
+        input.classList.add('invalid');
+        input.classList.remove('valid');
+    }
+}
+
+function clearValidationState(input) {
+    input.classList.remove('valid', 'invalid');
+}
+
+function addPremiumHoverEffects() {
+    // Add magnetic effect to buttons
+    const buttons = document.querySelectorAll('.btn, .view-details-btn');
+    
+    buttons.forEach(button => {
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            button.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.05)`;
+        });
+        
+        button.addEventListener('mouseleave', () => {
+            button.style.transform = 'translate(0, 0) scale(1)';
+        });
+    });
+}
+
+// ===== PREMIUM NOTIFICATION SYSTEM =====
+function showNotification(message, type = 'info', duration = 4000) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        ${message}
+        <button class="notification-close">&times;</button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Show notification
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+    
+    // Close button functionality
+    const closeBtn = notification.querySelector('.notification-close');
+    closeBtn.addEventListener('click', () => {
+        hideNotification(notification);
+    });
+    
+    // Auto hide
+    setTimeout(() => {
+        hideNotification(notification);
+    }, duration);
+}
+
+function hideNotification(notification) {
+    notification.classList.remove('show');
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+        }
+    }, 400);
+}
+
+// Enhanced form submission with notifications
+function enhanceFormSubmissions() {
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simulate form submission
+            showNotification('Thank you! Your message has been sent successfully.', 'success');
+            
+            // Reset form after successful submission
+            setTimeout(() => {
+                form.reset();
+            }, 1000);
+        });
+    });
 }
 
 // Make functions globally available
