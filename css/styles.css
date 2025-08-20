@@ -322,10 +322,10 @@ p {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(232, 234, 237, 0.12);
+    background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(25px) saturate(180%);
     -webkit-backdrop-filter: blur(25px) saturate(180%);
-    border-bottom: 4px solid var(--bright-sky-blue);
+    border-bottom: 2px solid var(--bright-sky-blue);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     padding: 1.2rem 0;
@@ -333,11 +333,11 @@ p {
 }
 
 .navbar.scrolled {
-    background: rgba(15, 15, 15, 0.35);
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(30px) saturate(200%);
     -webkit-backdrop-filter: blur(30px) saturate(200%);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    border-bottom: 4px solid var(--deep-teal-blue);
+    border-bottom: 2px solid var(--deep-teal-blue);
     padding: 0.8rem 0;
 }
 
@@ -364,9 +364,9 @@ p {
 .logo-text {
     font-family: var(--font-primary);
     font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--black-accent);
-    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+    color: var(--off-white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .nav-menu {
@@ -486,7 +486,7 @@ p {
     max-width: 900px;
     padding: 4rem 3rem;
     margin-top: 8rem;
-    background: rgba(15, 15, 15, 0.25);
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid var(--bright-sky-blue);
